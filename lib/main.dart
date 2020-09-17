@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
+import './questao.dart';
+import './resposta.dart';
 
 main() => runApp(PerguntaApp());
 
-class PerguntaAppState extends State<PerguntaApp> {
-  var perguntaSelecionada = 0;
+class _PerguntaAppState extends State<PerguntaApp> {
+  var _perguntaSelecionada = 0;
 
-  void responder() {
+  void _responder() {
+    //Função para avançar as perguntas
     setState(() {
-      perguntaSelecionada++;
+      _perguntaSelecionada++;
     });
-
-    print(perguntaSelecionada);
   }
 
   @override
   Widget build(BuildContext context) {
-    
-    final perguntas = [
-      'Qual é a sua cor favorita ?',
-      'Qual é o seu animal favorito?'
+    final perguntas = [ // Lista de Maps com perguntas e respostas
+      {
+        'texto': 'Qual é a sua cor favorita ?',
+        'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco'],
+      },
+      {
+        'texto': 'Qual é o seu animal favorito?',
+        'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão'],
+      },
+      {
+        'texto': 'Qual é o seu instrutor favorito?',
+        'respostas': ['Maria', 'João', 'Leo', 'Pedro'],
+      },
     ];
 
     return MaterialApp(
@@ -28,21 +38,12 @@ class PerguntaAppState extends State<PerguntaApp> {
           title: Text('Perguntas'),
         ),
         body: Column(
-          children: [
+          children: <Widget> [
             // Lista de vários componentes
-            Text(perguntas[perguntaSelecionada]), // Caixa de Texto
-            RaisedButton(
-              child: Text('Resposta 1'),
-              onPressed: responder,
-            ),
-            RaisedButton(
-              child: Text('Resposta 2'),
-              onPressed: responder,
-            ),
-            RaisedButton(
-              child: Text('Resposta 3'),
-              onPressed: responder,
-            ),
+            Questao(perguntas[_perguntaSelecionada]['texto']), // Caixa de Texto |Indice e Chave|
+            Resposta('Resposta 1', _responder),
+            Resposta('Resposta 2', _responder),
+            Resposta('Resposta 3', _responder),
           ],
         ),
       ),
@@ -51,7 +52,7 @@ class PerguntaAppState extends State<PerguntaApp> {
 }
 
 class PerguntaApp extends StatefulWidget {
-  PerguntaAppState createState() {
-    return PerguntaAppState();
+  _PerguntaAppState createState() {
+    return _PerguntaAppState();
   }
 }

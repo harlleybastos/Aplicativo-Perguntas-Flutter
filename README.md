@@ -5,4 +5,9 @@ Aplicativos de perguntas desenvolvido em Flutter.
 ## Tarefas
 O controle de tarefas desse projeto será realizado pelo GitHub.
 
+## Icones
 
+- :package: Nova funcionalidade
+- :up: Atualização
+- :beetle: Correção de bug
+- :checkered_flag: Release
