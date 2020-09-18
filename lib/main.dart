@@ -6,30 +6,40 @@ main() => runApp(PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
+  final _perguntas = const [
+    // Lista de Maps com perguntas e respostas
+    {
+      'texto': 'Qual é a sua cor favorita ?',
+      'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco'],
+    },
+    {
+      'texto': 'Qual é o seu animal favorito?',
+      'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão'],
+    },
+    {
+      'texto': 'Qual é o seu instrutor favorito?',
+      'respostas': ['Maria', 'João', 'Leo', 'Pedro'],
+    },
+  ];
 
   void _responder() {
     //Função para avançar as perguntas
-    setState(() {
-      _perguntaSelecionada++;
-    });
+    if (temPerguntaSelecionada) {
+      setState(() {
+        _perguntaSelecionada++;
+      });
+    }
+  }
+
+  bool get temPerguntaSelecionada {
+    return _perguntaSelecionada < _perguntas.length;
   }
 
   @override
   Widget build(BuildContext context) {
-    final perguntas = [ // Lista de Maps com perguntas e respostas
-      {
-        'texto': 'Qual é a sua cor favorita ?',
-        'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco'],
-      },
-      {
-        'texto': 'Qual é o seu animal favorito?',
-        'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão'],
-      },
-      {
-        'texto': 'Qual é o seu instrutor favorito?',
-        'respostas': ['Maria', 'João', 'Leo', 'Pedro'],
-      },
-    ];
+    List<String> respostas = temPerguntaSelecionada
+        ? _perguntas[_perguntaSelecionada]['respostas']
+        : null;
 
     return MaterialApp(
       home: Scaffold(
@@ -37,15 +47,22 @@ class _PerguntaAppState extends State<PerguntaApp> {
         appBar: AppBar(
           title: Text('Perguntas'),
         ),
-        body: Column(
-          children: <Widget> [
-            // Lista de vários componentes
-            Questao(perguntas[_perguntaSelecionada]['texto']), // Caixa de Texto |Indice e Chave|
-            Resposta('Resposta 1', _responder),
-            Resposta('Resposta 2', _responder),
-            Resposta('Resposta 3', _responder),
-          ],
-        ),
+        body: temPerguntaSelecionada
+            ? Column(
+                children: <Widget>[
+                  // Lista de vários componentes
+                  Questao(_perguntas[_perguntaSelecionada]
+                      ['texto']), // Caixa de Texto |Indice e Chave|
+                  ...respostas
+                      .map((t) => Resposta(t, _responder))
+                      .toList(), //Transforma uma lista de String em uma lista de Widgets
+                ],
+              )
+            : Center(
+                child: Text(
+                'Parabéns !',
+                style: TextStyle(fontSize: 28),
+              )),
       ),
     );
   }
