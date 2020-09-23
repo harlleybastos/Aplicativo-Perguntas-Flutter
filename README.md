@@ -21,5 +21,5 @@ Questionário em Flutter
 <p align="center">O aplicativo de questionário Flutter foi exclusivamente desenvolvido com fins didaticos e explorar todas as funcionalidades do framework Flutter.</p>
 
 <div align="center>
-    <img src="img/app.gif">
+    
 </div>
