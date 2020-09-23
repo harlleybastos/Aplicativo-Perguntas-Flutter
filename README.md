@@ -11,3 +11,15 @@ O controle de tarefas desse projeto será realizado pelo GitHub.
 - :up: Atualização
 - :beetle: Correção de bug
 - :checkered_flag: Release
+
+<h1 aling="center">
+<br>
+<br>
+Questionário em Flutter
+</h1>
+
+<p align="center">O aplicativo de questionário Flutter foi exclusivamente desenvolvido com fins didaticos e explorar todas as funcionalidades do framework Flutter.</p>
+
+<div align="center>
+    <img src="img/app.gif">
+</div>
