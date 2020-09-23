@@ -6,41 +6,62 @@ main() => runApp(PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
+  var _pontuacaototal = 0;
   final _perguntas = const [
     // Lista de Maps com perguntas e respostas
     {
       'texto': 'Qual é a sua cor favorita ?',
-      'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco'],
+      'respostas': [
+        {'texto': 'Preto', 'pontuacao': 10},
+        {'texto': 'Vermelho', 'pontuacao': 5},
+        {'texto': 'Verde', 'pontuacao': 3},
+        {'texto': 'Branco', 'pontuacao': 1},
+      ],
     },
     {
       'texto': 'Qual é o seu animal favorito?',
-      'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão'],
+      'respostas': [
+        {'texto': 'Coelho', 'pontuacao' : 10},
+        {'texto': 'Cobra', 'pontuacao' : 5 },
+        {'texto': 'Elefante', 'pontuacao' : 3},
+        {'texto': 'Leão', 'pontuacao': 1},
+     ],
     },
     {
       'texto': 'Qual é o seu instrutor favorito?',
-      'respostas': ['Maria', 'João', 'Leo', 'Pedro'],
+      'respostas': [
+        {'texto':'Leo', 'pontuacao': 10},
+        {'texto':'Maria', 'pontuacao': 5},
+        {'texto':'João', 'pontuacao': 3},
+        {'texto':'Pedro', 'pontuacao': 1},
+      ],
     },
   ];
 
-  void _responder() {
+  void _responder(int pontuacao) {
     //Função para avançar as perguntas
     if (temPerguntaSelecionada) {
       setState(() {
         _perguntaSelecionada++;
+        _pontuacaototal +=pontuacao;
       });
     }
   }
 
-   bool get temPerguntaSelecionada {
+void _reiniciarQuestionario(){
+  setState((){
+    _perguntaSelecionada = 0;
+    _pontuacaototal = 0 ;
+   });
+}
+
+
+  bool get temPerguntaSelecionada {
     return _perguntaSelecionada < _perguntas.length;
   }
 
-
-
   @override
   Widget build(BuildContext context) {
-    
-
     return MaterialApp(
       home: Scaffold(
         //Estrtutura da aplicação
@@ -49,11 +70,11 @@ class _PerguntaAppState extends State<PerguntaApp> {
         ),
         body: temPerguntaSelecionada
             ? Questionario(
-              perguntas: _perguntas,
-              perguntaSelecionada: _perguntaSelecionada,
-              responder: _responder,
-            )
-            : Resultado(),
+                perguntas: _perguntas,
+                perguntaSelecionada: _perguntaSelecionada,
+                responder: _responder,
+              )
+            : Resultado(_pontuacaototal, _reiniciarQuestionario),
       ),
     );
   }
