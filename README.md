@@ -1,25 +1,49 @@
-# Aplicativos-Perguntas-Flutter
+<h1 align="center">Aplicativo Questionário | Flutter</h1>
 
-Aplicativos de perguntas desenvolvido em Flutter.
+<h1 align="center">
+<img src="img/app.gif">
+</h1>
 
-## Tarefas
-O controle de tarefas desse projeto será realizado pelo GitHub.
+# Indice
+- [Sobre](#-sobre)
+- [Tecnologias utilizadas](#-tecnologias-utilizadas)
+- [Como baixar o projeto](#-como-baixar-o-projeto)
 
+# 📜 Sobre
+Aplicativo simples de questionário desenvolvido em **Flutter** com intuito de se colocar em pratica todos o conteúdo estudado até o momento.
+
+---
+
+## 👨‍💻 Tecnologias utilizadas
+
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
+
+- [Dart](https://dart.dev/)
+- [Flutter](https://flutter.dev/)
+---
+## 📦 Como baixar o projeto
+
+```bash
+
+# Clonar o repositório
+$git clone https://github.com/harlleybastos/Aplicativo-Perguntas-Flutter.git
+
+#Acessar o repositório
+$cd Aplicativo-Perguntas-Flutter
+
+#Instalar as dependencias
+$yarn install
+
+#Iniciar o projeto
+$yarn start
+
+```
+---
 ## Icones
 
 - :package: Nova funcionalidade
 - :up: Atualização
 - :beetle: Correção de bug
 - :checkered_flag: Release
-
-<h1 aling="center">
-<br>
-<br>
-Questionário em Flutter
-</h1>
-
-<p align="center">O aplicativo de questionário Flutter foi exclusivamente desenvolvido com fins didaticos e explorar todas as funcionalidades do framework Flutter.</p>
-
-<div align="center>
-    
-</div>
+---
+Desenvolvido 👨‍💻 por Harlley dos Santos Bastos
