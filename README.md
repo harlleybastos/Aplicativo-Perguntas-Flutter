@@ -10,7 +10,7 @@
 - [Como baixar o projeto](#-como-baixar-o-projeto)
 
 # 📜 Sobre
-Aplicativo simples de questionário desenvolvido em **Flutter** com intuito de se colocar em pratica todos o conteúdo estudado até o momento.
+Aplicativo simples de questionário desenvolvido em **Flutter** com intuito de se colocar em pratica todo o conteúdo estudado até o momento.
 
 ---
 
